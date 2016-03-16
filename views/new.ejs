@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>New Animal</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1>New Animal</h1>
+			<div class="row">
+				<form class="col-md-4" id="form" action="/zoo" method="post">
+	  				<div class="form-group">
+	    				<label for="name">Name:</label>
+	    				<input type="text" class="form-control" name="name">
+	  				</div>
+	  				<div class="form-group">
+		    			<label for="type">Type:</label>
+		    			<input type="text" class="form-control" name="type">
+	  				</div>
+	  				<div class="form-group">
+	    				<label for="color">Color:</label>
+	    				<input type="text" class="form-control" name="color">
+	  				</div>
+	  				<div class="form-group">
+	    				<label for="weight">Weight:</label>
+	    				<input type="text" class="form-control" name="weight">
+	  				</div>
+	  				<button type="submit" class="btn btn-danger">Add to the Zoo</button>
+				</form>
+			</div>
+			<a class="btn btn-info" href="/">Return to Zoo</a>
+			<% if(typeof(errors) != 'undefined'){ %>
+				<% for(var z in errors){ %>
+					<h3><%= errors[z].message %></h3> 
+				<% } %>
+			<% } %>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>The Zoo</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1>The Zoo</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Color</th>
+						<th>Weight</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<% if(animals != null){ %>
+					<% for(var x in animals){ %>
+						<tr>
+							<td><%= animals[x].name %></td>
+							<td><%= animals[x].type %></td>
+							<td><%= animals[x].color %></td>
+							<td><%= animals[x].weight %></td>
+							<td><ul>
+									<li><a class="btn btn-info" href="/zoo/<%= animals[x].id %>" role="button">Show</a></li>
+									<li><a class="btn btn-success" href="/zoo/<%= animals[x].id %>/edit" role="button">Edit</a></li>
+									<li><form action="/zoo/<%= animals[x].id %>/destroy" method="post">
+										<button type="submit" class="btn btn-danger">Delete</button>
+									</form></li>
+								</ul>
+							</td>
+						</tr>
+					<% } %>
+				<% } %>
+			</table>
+			<a class="btn btn-primary" href="/zoo/new" role="button">Add an Animal</a></td>
+		</div>
+	</body>
+</html>
