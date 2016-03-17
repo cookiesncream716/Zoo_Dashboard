@@ -1,31 +1,34 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-app.use(express.static(path.join(__dirname, './static')));
-app.set('views', path.join(__dirname, './views'));
+app.use(express.static(path.join(__dirname, './client/static')));
+app.set('views', path.join(__dirname, './client/views'));
 app.set('view engine', 'ejs');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mongoose_dashboard');
+// require the mongoose configuration file which does the rest for us
+require('./server/config/mongoose.js');
 
-var ZooSchema = new mongoose.Schema({
-	name: String,
-	type: String,
-	color: String,
-	weight: String
-});
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/mongoose_dashboard');
 
-ZooSchema.path('name').required(true, 'Name cannot be blank');
-ZooSchema.path('type').required(true, 'Type cannot be blank');
-ZooSchema.path('color').required(true, 'Color cannot be blank');
-ZooSchema.path('weight').required(true, 'Weight cannot be blank');
+// var ZooSchema = new mongoose.Schema({
+// 	name: String,
+// 	type: String,
+// 	color: String,
+// 	weight: String
+// });
 
-mongoose.model('Zoo', ZooSchema);
+// ZooSchema.path('name').required(true, 'Name cannot be blank');
+// ZooSchema.path('type').required(true, 'Type cannot be blank');
+// ZooSchema.path('color').required(true, 'Color cannot be blank');
+// ZooSchema.path('weight').required(true, 'Weight cannot be blank');
 
-var Zoo = mongoose.model('Zoo');
+// mongoose.model('Zoo', ZooSchema);
+
+// var Zoo = mongoose.model('Zoo');
 
 app.get('/', function(req, res){
 	Zoo.find({}, function(err, animals){
